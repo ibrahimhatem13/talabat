@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
 {
+
+    protected $fillable = ['name','user_id','description','address', 'phone', 'opening_hours','image'];
+
+     public function users(){
+        return $this->belongsTo(User::class);
+    }
+
     public function categories()
     {
         return $this->hasMany(Category::class);

@@ -18,6 +18,7 @@ class CategoriesSeeder extends Seeder
         foreach ($categories as $cat) {
             Category::create([
                 'name' => $cat,
+                'restaurant_id' => 1
             ]);
         }
     }

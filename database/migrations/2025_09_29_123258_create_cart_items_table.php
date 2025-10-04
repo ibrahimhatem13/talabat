@@ -13,18 +13,10 @@ return new class extends Migration
     {
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
-            // cart_id مرتبط بالـ carts
-            $table->unsignedBigInteger('cart_id');
-            $table->foreign('cart_id')->references('id')->on('carts')
-                  ->onDelete('cascade'); // لو الكارت اتمسح، العناصر تتشال معاه
-
-            // menu_item_id مرتبط بالـ menu_items
-            $table->unsignedBigInteger('menu_item_id');
-            $table->foreign('menu_item_id')->references('id')->on('menu_items')
-                  ->onDelete('cascade'); // لو الأكلة اتمسحت، تتشال من الكارت
-
-            // الكمية
+            $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
+            $table->foreignId('menu_item_id')->constrained('menu_items')->onDelete('cascade');
             $table->integer('quantity')->default(1);
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
