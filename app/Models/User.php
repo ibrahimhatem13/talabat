@@ -22,7 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'phone',
+        'address',
     ];
+    
     public function restaurants(){
         return $this->hasMany(Restaurant::class);
     }

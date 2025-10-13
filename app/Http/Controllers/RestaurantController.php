@@ -32,7 +32,7 @@ class RestaurantController extends Controller
 
     $restaurant = Restaurant::create([
         'name' => $request->name,
-        'user_id' => 1,
+        'user_id' => $request->user()->id,
         'description' => $request->description,
         'address' => $request->address,
         'phone' => $request->phone,
@@ -70,10 +70,9 @@ class RestaurantController extends Controller
 
     }
 
-
-        /**
-         * Remove the specified resource from storage.
-         */
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Restaurant $restaurant)
     {
         $restaurant->delete();

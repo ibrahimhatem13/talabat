@@ -14,6 +14,11 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+    protected $policies = [
+        \App\Models\Restaurant::class => \App\Policies\RestaurantPolicy::class,
+    ];
+
+
     /**
      * Bootstrap any application services.
      */
